@@ -2,7 +2,7 @@
 (auto-image-file-mode) ;;; 让 Emacs 可以直接打开和显示图片
 
 ;;; 让 dired 可以递归的拷贝和删除目录
-(setq dired-recursive-copies 'top) 
+(setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
 
 ;;; 时间相关
@@ -20,3 +20,13 @@
 (blink-cursor-mode t) ;;; 光标闪烁
 (set-fringe-style -1) ;;; 边缘
 (put 'upcase-region 'disabled nil) ;;; 选中文字大写
+
+(setq make-backup-files nil) ;;; ~
+(setq auto-save-default nil) ;;; ##
+(setq query-replace-highlight t)
+(setq search-highlight t)
+(setq font-lock-maximum-decoration t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(delete-selection-mode t)
+(setq require-final-newline t)
+(setq major-mode 'text-mode)

@@ -2,14 +2,6 @@
 (setq default-tab-width 8)
 (setq tab-stop-list ())
 (setq default-major-mode 'text-mode) ;;; 缺省的 major mode 设置为 text-mode
-(setq make-backup-files nil)
-(setq query-replace-highlight t)
-(setq search-highlight t)
-(setq font-lock-maximum-decoration t)
-(fset 'yes-or-no-p 'y-or-n-p)
-(delete-selection-mode t)
-(setq require-final-newline t)
-(setq major-mode 'text-mode)
 (show-paren-mode t) ;;; 括号匹配时显示另外一边的括号，而不是烦人的跳到另一个括号
 (setq show-paren-style 'parentheses)
 (setq-default cursor-type 'bar) ;;; 将光标设置为短线，而非box
@@ -30,7 +22,9 @@
         try-complete-lisp-symbol))
 
 (global-whitespace-mode) ;;; 启用whitespace模式
+(setq whitespace-line-column 150) ;;; 每行字符数限制
 (setq whitespace-style
-	  '(face trailing tabs lines lines-tail empty
-		space-after-tab space-before-tab))
+      '(face trailing tabs lines lines-tail empty
+             space-after-tab space-before-tab))
+(setq fill-column 150)
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;;; 保存时清除行尾空格
