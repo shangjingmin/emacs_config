@@ -1,7 +1,9 @@
+(setq ruby-insert-encoding-magic-comment nil) ; 不在文件头插入文件编码行
+;(setq whitespace-global-modes nil) ; 不自动删除多余空格
+
 (setq el-get-sources
       (append el-get-sources '((:name ruby-mode
                                       :load "ruby-mode.el")
-                               ; use rinari (:name inf-ruby)
-                               ; use rinari (:name ruby-compilation)
                                (:name rvm)
-			       (:name rinari))))
+			       (:name rinari) ; include inf-ruby ruby-compilation
+                               )))

@@ -29,3 +29,8 @@
         try-complete-lisp-symbol-partially
         try-complete-lisp-symbol))
 
+(global-whitespace-mode) ;;; 启用whitespace模式
+(setq whitespace-style
+	  '(face trailing tabs lines lines-tail empty
+		space-after-tab space-before-tab))
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ;;; 保存时清除行尾空格
