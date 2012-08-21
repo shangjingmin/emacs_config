@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("setting.el"
+ (filename . "~/.emacs.d/init/personal/setting.el")
+ (front-context-string . "(setq visible-be")
+ (rear-context-string)
+ (position . 1))
+("tj.org"
+ (filename . "~/Ubuntu One/tianji/tj.org")
+ (front-context-string . "* tmp\n** surl\n# ")
+ (rear-context-string)
+ (position . 1))
+("tj"
+ (filename . "/home/prj/tianji/tianjicom/")
+ (front-context-string . "app\n  -rw-rw-r--")
+ (rear-context-string . "96  6月 28 14:26 ")
+ (position . 192))
+)
