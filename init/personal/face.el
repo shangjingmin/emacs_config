@@ -1,6 +1,6 @@
 (setq inhibit-startup-message t) ;;; 关闭开机时的启动画面
 (setq initial-scratch-message nil)
-(tool-bar-mode) ;;; 关闭工具栏
+(tool-bar-mode nil) ;;; 关闭工具栏
 (set-scroll-bar-mode 'right) ;;; 滚动条设在右侧
 (setq column-number-mode t) ;;; 显示列号
 ;;; 防止页面滚动时跳动， scroll-margin 3 可以在靠近屏幕边沿3行时就开始滚动，可以很好的看到上下文
@@ -29,7 +29,7 @@
 
 ;;; theme
 (load-theme 'tango)
-(set-default-font "Bitstream Vera Sans Mono-10")  
-;;; 设置中文字体  
-(set-fontset-font "fontset-default"  
-		  'gb18030 '("WenQuanYi Bitmap Song" . "unicode-bmp"))  
+(set-default-font "Bitstream Vera Sans Mono-10")
+;;; 设置中文字体
+(set-fontset-font "fontset-default"
+		  'gb18030 '("WenQuanYi Bitmap Song" . "unicode-bmp"))

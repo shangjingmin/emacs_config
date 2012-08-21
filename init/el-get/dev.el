@@ -20,5 +20,7 @@
                                       :url "https://github.com/alexott/ecb/"
                                       :branch "new-cedet"
                                       ; 进入后编译以对应正确的cedet版本 :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (lambda () (ecb-activate)(ecb-byte-compile))
-                                      )
+                                      :after (lambda ()
+                                               (setq ecb-auto-activate t)
+                                               (setq ecb-tip-of-the-day nil)))
                                )))

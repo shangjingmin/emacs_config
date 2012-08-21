@@ -22,9 +22,9 @@
         try-complete-lisp-symbol))
 
 (global-whitespace-mode) ;;; 启用whitespace模式
-(setq whitespace-line-column 150) ;;; 每行字符数限制
+(setq whitespace-line-column 120) ;;; 每行字符数限制
 (setq whitespace-style
       '(face trailing tabs lines lines-tail empty
              space-after-tab space-before-tab))
-(setq fill-column 150)
+(setq fill-column 120)
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;;; 保存时清除行尾空格
