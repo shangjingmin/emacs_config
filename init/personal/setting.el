@@ -18,6 +18,7 @@
 (recentf-mode t) ;;; File menu recent-file item
 (setq x-select-enable-clipboard t) ;;; 允许emacs和外部其他程序的粘贴
 (blink-cursor-mode t) ;;; 光标闪烁
+(set-cursor-color "red")
 (set-fringe-style -1) ;;; 边缘
 (put 'upcase-region 'disabled nil) ;;; 选中文字大写
 

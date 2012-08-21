@@ -22,5 +22,6 @@
                                       ; 进入后编译以对应正确的cedet版本 :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (lambda () (ecb-activate)(ecb-byte-compile))
                                       :after (lambda ()
                                                (setq ecb-auto-activate t)
-                                               (setq ecb-tip-of-the-day nil)))
+                                               (setq ecb-tip-of-the-day nil)
+                                               (setq ecb-windows-width 0.22)))
                                )))

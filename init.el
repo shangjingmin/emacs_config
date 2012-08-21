@@ -28,6 +28,7 @@
       (append '(el-get)
               (mapcar 'el-get-source-name el-get-sources)))
 (el-get 'sync my-el-get-packages)
+(ecb-activate) ;;; auto open ecb
 ;;; end ;;; el-get
 
 ;;; start ;;; person

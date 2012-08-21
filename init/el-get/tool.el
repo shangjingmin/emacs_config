@@ -1,6 +1,6 @@
 (setq el-get-sources
  (append el-get-sources '((:name sdcv-mode
-                                 :description "emacs dictionary, need shell command sdcv"
+                                 :description "emacs dictionary, need stardict and shell command sdcv"
                                  :type git
                                  :url "https://github.com/gucong/emacs-sdcv"
                                  :branch "master"
@@ -36,4 +36,5 @@
                                  :after(lambda ()
                                          (require 'weibo)
                                          ))
+                          (:name git-emacs)
                           )))
