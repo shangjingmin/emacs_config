@@ -15,17 +15,14 @@
 (hl-line-mode) ;;; 高亮显示当前行
 
 ;;; 最大化
-(defun w32-restore-frame ()
-  "Restore a minimized frame"
+(defun maximize-frame ()
+  "Maximizes the active frame in Windows"
   (interactive)
-  (w32-send-sys-command 61728))
-(defun w32-maximize-frame ()
-  "Maximize the current frame"
-  (interactive)
-  ;(w32-send-sys-command 61488)
-  )
-(w32-maximize-frame)
-(add-hook 'after-make-frame-functions 'w32-maximize-frame)
+  ;; Send a `WM_SYSCOMMAND' message to the active frame with the
+  ;; `SC_MAXIMIZE' parameter.
+  (when (eq system-type 'windows-nt)
+    (w32-send-sys-command 61488)))
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 ;;; theme
 (load-theme 'tango)
