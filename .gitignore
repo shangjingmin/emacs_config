@@ -1,0 +1,8 @@
+init.el
+el-get/
+elpa/
+semanticdb/
+*~
+ede-projects.el
+savehist
+srecode-map.el
