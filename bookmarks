@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("setting.el"
+(("tmee.org"
+ (filename . "~/Ubuntu One/tmee/tmee.org")
+ (front-context-string . " 12h0102，0096这两票")
+ (rear-context-string . "p\n* task\n** TODO")
+ (position . 95))
+("setting.el"
  (filename . "~/.emacs.d/init/personal/setting.el")
  (front-context-string . "(setq visible-be")
  (rear-context-string)
