@@ -36,5 +36,10 @@
                                  :after(lambda ()
                                          (require 'weibo)
                                          ))
-                          (:name git-emacs)
+                          (:name git-emacs
+                                 :after (lambda ()
+                                          (defun gitk-files ()
+                                            (interactive)
+                                            (start-process "gitk" nil gitk-program buffer-file-name))
+                                          ))
                           )))
