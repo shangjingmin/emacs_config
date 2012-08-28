@@ -27,4 +27,5 @@
       '(face trailing tabs lines lines-tail empty
              space-after-tab space-before-tab))
 (setq fill-column 720)
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;;; 保存时清除行尾空格
+(setq next-line-add-newlines nil) ;;; 文件尾不自动添加行
+;(add-hook 'before-save-hook 'delete-trailing-whitespace) ;;; 保存时清除行尾空格

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("tmee.org"
+(("ubuntu.org"
+ (filename . "~/Ubuntu One/public/notebook/ubuntu.org")
+ (front-context-string . "* init\n** 12.04\n")
+ (rear-context-string)
+ (position . 1))
+("tmee.org"
  (filename . "~/Ubuntu One/tmee/tmee.org")
  (front-context-string . " 12h0102，0096这两票")
  (rear-context-string . "p\n* task\n** TODO")
