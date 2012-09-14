@@ -5,9 +5,11 @@
       (append el-get-sources '((:name ruby-mode
                                       :load "ruby-mode.el")
                                (:name rvm)
-			       (:name rinari ; include inf-ruby ruby-compilation
+                               (:name rinari ; include inf-ruby ruby-compilation
                                       :build ("rake doc:make_info") ;;; install_info format error, maybe need ginstall-info
+                                      :load-path(".")
                                       :after (lambda ()
+                                               (ido-mode t)
                                                (require 'rinari)
                                                ))
                                )))
