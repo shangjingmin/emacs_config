@@ -30,3 +30,8 @@
 ;;; 设置中文字体
 (set-fontset-font "fontset-default"
 		  'gb18030 '("WenQuanYi Bitmap Song" . "unicode-bmp"))
+
+
+;; Setting English Font
+;(set-face-attribute
+;  'default nil :font "Consolas 12")

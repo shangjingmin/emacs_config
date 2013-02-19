@@ -3,6 +3,15 @@
                                       :url "https://github.com/capitaomorte/yasnippet"
                                       :type git)
                                (:name textmate)
+                               (:name highlight-parentheses
+                                      :after (lambda ()
+                                               (add-hook 'find-file-hooks 'highlight-hooks)
+                                               (defun highlight-hooks()
+                                                 (highlight-parentheses-mode t)
+                                                 (setq highlight-symbol-idle-delay 0.5)
+                                                 ;(highlight-symbol-mode t)
+                                                 )
+                                               ))
                                (:name cedet
                                       :compile "cedet-devel-load.el"
 				      :load-path ("." "./lisp/common" "./lisp/speedbar")

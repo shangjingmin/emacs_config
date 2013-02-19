@@ -31,3 +31,10 @@
 (delete-selection-mode t)
 (setq require-final-newline t)
 (setq major-mode 'text-mode)
+
+;;; 括号自动匹配
+(setq skeleton-pair t)
+(global-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "[") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+

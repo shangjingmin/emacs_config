@@ -11,5 +11,10 @@
                                       :after (lambda ()
                                                (ido-mode t)
                                                (require 'rinari)
+                                               (add-hook 'ruby-mode-hook
+                                                         '(lambda()
+                                                            (remove-hook 'before-save-hook 'ruby-mode-set-encoding) ; 不在文件头插入文件编码行
+                                                            (remove-hook 'before-save-hook 'delete-trailing-whitespace) ; 不自动删除多余空格
+                                                            ))
                                                ))
                                )))
