@@ -1,5 +1,5 @@
 init.el
-el-get/
+/el-get/
 elpa/
 semanticdb/
 *~
