@@ -42,4 +42,10 @@
                                             (interactive)
                                             (start-process "gitk" nil gitk-program buffer-file-name))
                                           ))
+                          (:name calfw
+                                 :description "org-model sync with google calendar"
+                                 :after(lambda()
+                                         (require 'calfw)
+                                         (require 'calfw-org)
+                                         ))
                           )))
