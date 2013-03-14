@@ -24,7 +24,7 @@
                                       :post-init
                                       (unless (featurep 'cedet-devel-load)
                                         (load (expand-file-name "cedet-devel-load.el" pdir)))
-                                      :after (lambda ()
+                                      :after (progn
                                                (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
                                                (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
                                                (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
@@ -36,9 +36,9 @@
                                       :type git
                                       :url "https://github.com/alexott/ecb/"
                                         ; :branch "new-cedet"
-                                      :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (lambda () (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
-                                      :after (lambda ()
-                                        ;(setq ecb-auto-activate t)
+                                      :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (progn (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
+                                      :after (progn
+                                               (setq ecb-auto-activate t)
                                                (setq ecb-tip-of-the-day nil)
                                                (setq ecb-windows-width 0.22)
                                                (defconst ecb-cedet-required-version-min '(1 0 1 1)

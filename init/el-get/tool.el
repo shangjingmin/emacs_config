@@ -5,7 +5,7 @@
                                  :url "https://github.com/gucong/emacs-sdcv"
                                  :branch "master"
                                  :load-path(".")
-                                 :after(lambda ()
+                                 :after(progn
                                          (require 'sdcv-mode)
                                          ))
                           (:name showtip
@@ -20,7 +20,7 @@
                                  :url "https://github.com/emacsmirror/sdcv"
                                  :branch "master"
                                  :load-path(".")
-                                 :after(lambda ()
+                                 :after(progn
                                          (require 'sdcv)
                                          (setq sdcv-dictionary-simple-list
                                                '("懒虫简明英汉词典" "懒虫简明汉英词典"))
@@ -33,18 +33,18 @@
                                  :url "https://github.com/austin-----/weibo.emacs"
                                  :branch "master"
                                  :load-path(".")
-                                 :after(lambda ()
+                                 :after(progn
                                          (require 'weibo)
                                          ))
                           (:name git-emacs
-                                 :after (lambda ()
+                                 :after (progn
                                           (defun gitk-files ()
                                             (interactive)
                                             (start-process "gitk" nil gitk-program buffer-file-name))
                                           ))
                           (:name calfw
                                  :description "org-model sync with google calendar"
-                                 :after(lambda()
+                                 :after(progn
                                          (require 'calfw)
                                          (require 'calfw-org)
                                          ))

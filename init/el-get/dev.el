@@ -4,7 +4,7 @@
                                       :type git)
                                (:name textmate)
                                (:name highlight-parentheses
-                                      :after (lambda ()
+                                      :after (progn
                                                (add-hook 'find-file-hooks 'highlight-hooks)
                                                (defun highlight-hooks()
                                                  (highlight-parentheses-mode t)
