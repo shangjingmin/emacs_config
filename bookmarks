@@ -3,22 +3,22 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("db.org"
- (filename . "~/Ubuntu One/public/notebook/db.org")
+ (filename . "~/nethd/self/public/notebook/db.org")
  (front-context-string . "* db\n** mysql\n**")
  (rear-context-string)
  (position . 1))
 ("tmp.org"
- (filename . "~/Ubuntu One/tmp.org")
+ (filename . "~/nethd/self/tmp.org")
  (front-context-string . "\n* TV\n* efile\n**")
  (rear-context-string)
  (position . 3))
 ("cp_index.org"
- (filename . "~/Ubuntu One/tianji/cp/cp_index.org")
+ (filename . "~/nethd/self/tianji/cp/cp_index.org")
  (front-context-string . "#+OPTIONS: ^:{}\n")
  (rear-context-string)
  (position . 1))
 ("tj_cp.org"
- (filename . "~/Ubuntu One/tianji/cp.org")
+ (filename . "~/nethd/self/tianji/cp.org")
  (front-context-string . "* tianji works\n*")
  (rear-context-string)
  (position . 1))
@@ -33,12 +33,12 @@
  (rear-context-string . "96  9月 14 16:40 ")
  (position . 189))
 ("ubuntu.org"
- (filename . "~/Ubuntu One/public/notebook/ubuntu.org")
+ (filename . "~/nethd/self/public/notebook/ubuntu.org")
  (front-context-string . "* init\n** 12.04\n")
  (rear-context-string)
  (position . 1))
 ("tmee.org"
- (filename . "~/Ubuntu One/tmee/tmee.org")
+ (filename . "~/nethd/self/tmee/tmee.org")
  (front-context-string . " 12h0102，0096这两票")
  (rear-context-string . "p\n* task\n** TODO")
  (position . 95))
@@ -48,7 +48,7 @@
  (rear-context-string)
  (position . 1))
 ("tj.org"
- (filename . "~/Ubuntu One/tianji/tj.org")
+ (filename . "~/nethd/self/tianji/tj.org")
  (front-context-string . "* tmp\n** surl\n# ")
  (rear-context-string)
  (position . 1))
