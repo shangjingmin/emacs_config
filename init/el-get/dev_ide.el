@@ -38,7 +38,7 @@
                                         ; :branch "new-cedet"
                                       :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (progn (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
                                       :after (progn
-                                               (setq ecb-auto-activate t)
+                                               ;(setq ecb-auto-activate t)
                                                (setq ecb-tip-of-the-day nil)
                                                (setq ecb-windows-width 0.22)
                                                (defconst ecb-cedet-required-version-min '(1 0 1 1)
