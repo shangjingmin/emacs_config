@@ -35,6 +35,12 @@
 ;; persion config
 (load-file-or-dir (concat my-init-base-path "init/personal"))
 ;;; end ;;; person
+
+;;; start ;;; buildin config
+(server-start)
+;;; end ;;; buildin config
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
