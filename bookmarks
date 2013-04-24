@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("db.org"
+(("tj_normandy"
+ (filename . "~/nethd/self/tianji/cp/normandy.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 1))
+("start.org"
+ (filename . "~/nethd/pubnote/start.org")
+ (front-context-string . "\n* acc\n* en\n* ar")
+ (rear-context-string . "** ruby\n*** \n** ")
+ (position . 68))
+("db.org"
  (filename . "~/nethd/self/public/notebook/db.org")
  (front-context-string . "* db\n** mysql\n**")
  (rear-context-string)

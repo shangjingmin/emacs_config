@@ -1,5 +1,5 @@
 (setq-default indent-tabs-mode nil) ;;; 不用tab键缩进
-(setq default-tab-width 8)
+(setq default-tab-width 2)
 (setq tab-stop-list ())
 (setq default-major-mode 'text-mode) ;;; 缺省的 major mode 设置为 text-mode
 (show-paren-mode t) ;;; 括号匹配时显示另外一边的括号，而不是烦人的跳到另一个括号
