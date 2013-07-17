@@ -6,3 +6,7 @@ semanticdb/
 ede-projects.el
 savehist
 srecode-map.el
+session\.*
+\.emacs.desktop*
+/newsticker/
+/emms/
