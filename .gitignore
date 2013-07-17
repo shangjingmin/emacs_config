@@ -10,3 +10,4 @@ session\.*
 \.emacs.desktop*
 /newsticker/
 /emms/
+bookmarks
