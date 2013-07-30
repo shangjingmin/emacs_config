@@ -28,7 +28,7 @@
                                                (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
                                                (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
                                                (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
-                                               (semantic-mode 1)
+                                               ;(semantic-mode 1)
                                                (global-ede-mode 1)
                                                ))
                                (:name ecb
