@@ -1,0 +1,12 @@
+* keyboards
+** global
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c d") 'sdcv-search) ; 查词
+#+end_src
+** org-mode
+#+begin_src emacs-lisp
+(define-key org-mode-map (kbd "C-c t") 'org-todo)) ; org todo sequence
+(define-key org-mode-map (kbd "C-c q") 'org-set-tags-command); org tag
+(define-key org-mode-map (kbd "C-c d") 'org-deadline); org deadline
+(define-key org-mode-map (kbd "C-c s") 'org-schedule); org schedule
+#+end_src

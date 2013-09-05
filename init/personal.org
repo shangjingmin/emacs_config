@@ -185,6 +185,12 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 (setq org-log-done 'time)
 (setq org-log-done 'note)
 
+(setq my-org-files-path "~/nethd/note")
+(setq org-directory my-org-files-path)
+(setq org-agenda-files (list (concat my-org-files-path "/prj/tianji/cp13.org")
+                             (concat my-org-files-path "/comp/emacs.org")
+                       ))
+
 (setq org-publish-project-alist
      '(("tj_cp"
         :base-directory "~/sjm_home/uo/tianji/cp/"
