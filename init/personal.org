@@ -127,6 +127,13 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 #+end_src
 * setting
 #+begin_src emacs-lisp
+; cann't work (setenv "LC_CTYPE" "zh_CN.UTF-8")
+;;; add /usr/local/bin/emacs
+;;   ! /bin/bash
+;;   # Make ibus work in emacs
+;;   export LC_CTYPE=zh_CN.UTF-8;
+;;   /usr/bin/emacs $*
+
 (setq visible-bell t) ;;; 关闭出错时的提示声
 (auto-image-file-mode) ;;; 让 Emacs 可以直接打开和显示图片
 
