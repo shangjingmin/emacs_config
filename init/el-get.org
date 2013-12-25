@@ -76,8 +76,29 @@
 
 (setq el-get-sources
       (append el-get-sources '((:name ruby-mode
-                                      :load "ruby-mode.el")
+                                      :load "ruby-mode.el"
+                                :after(progn
+                                        (setenv "RUBYOPT" "-KU")
+                                        )
+                                )
                                (:name rvm)
+                               (:name robe
+                                 :description "Code navigation, documentation lookup and completion for Ruby https://github.com/dgutov/robe"
+                                 :type git
+                                 :url "https://github.com/dgutov/robe.git"
+                                 :branch "master"
+                                 :load-path(".")
+                                 :after(progn
+                                         (add-hook 'ruby-mode-hook 'robe-mode)
+                                         ;(push 'company-robe company-backends)
+                                         (add-hook 'robe-mode-hook 'robe-ac-setup)
+                                         ))
+                               )))
+#+end_src
+* rails
+#+begin_src emacs-lisp
+(setq el-get-sources
+      (append el-get-sources '(
                                (:name rinari ; include inf-ruby ruby-compilation
                                       :build ("rake doc:make_info") ;;; install_info format error, maybe need ginstall-info
                                       :load-path(".")
@@ -90,13 +111,9 @@
                                                             (remove-hook 'before-save-hook 'delete-trailing-whitespace) ; 不自动删除多余空格
                                                             ))
                                                (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+                                               (setq rinari-tags-file-name "TAGS")
                                                ))
-                               )))
-#+end_src
-* rails
-#+begin_src emacs-lisp
-(setq el-get-sources
-      (append el-get-sources '((:name rhtml-mode)
+                               (:name rhtml-mode)
                                (:name yaml-mode)
                                )))
 #+end_src
