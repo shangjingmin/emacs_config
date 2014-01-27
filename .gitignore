@@ -1,7 +1,4 @@
 init.el
-init/base.el
-init/el-get.el
-init/personal.el
 /el-get/
 elpa/
 semanticdb/

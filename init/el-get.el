@@ -1,0 +1,287 @@
+
+(setq el-get-sources
+      (append el-get-sources '((:name yasnippet
+                                      :url "https://github.com/capitaomorte/yasnippet"
+                                      :type git)
+                               (:name textmate)
+                               (:name highlight-parentheses
+                                      :after (progn
+                                               (add-hook 'find-file-hooks 'highlight-hooks)
+                                               (defun highlight-hooks()
+                                                 (highlight-parentheses-mode t)
+                                                 (setq highlight-symbol-idle-delay 0.5)
+                                                 ;(highlight-symbol-mode t)
+                                                 )
+                                               ))
+                               )))
+
+(setq el-get-sources
+      (append el-get-sources '((:name cedet
+                                      :type bzr
+                                      :url "bzr://cedet.bzr.sourceforge.net/bzrroot/cedet/code/trunk"
+                                      :compile "cedet-devel-load.el"
+                                        ; :load-path ("." "./lisp/common" "./lisp/speedbar")
+                                      :build
+                                      ;; `((,el-get-emacs "-batch" "-Q" "-l" "cedet-build.el" "-f" "cedet-build"))
+                                      `(("sh" "-c" "touch `find . -name Makefile`")
+                                        ("make" ,(format "EMACS=%s" (shell-quote-argument el-get-emacs)) "clean-all")
+                                        ("make" ,(format "EMACS=%s" (shell-quote-argument el-get-emacs))))
+                                      :build/berkeley-unix
+                                      `(("sh" "-c" "touch `find . -name Makefile`")
+                                        ("gmake" ,(format "EMACS=%s" (shell-quote-argument el-get-emacs)) "clean-all")
+                                        ("gmake" ,(format "EMACS=%s" (shell-quote-argument el-get-emacs))))
+                                      :build/windows-nt ("echo #!/bin/sh > tmp.sh & echo touch `/usr/bin/find . -name Makefile` >> tmp.sh & echo make FIND=/usr/bin/find >> tmp.sh"
+                                                         "sed 's/^M$//' tmp.sh > tmp2.sh"
+                                                         "sh ./tmp2.sh" "rm ./tmp.sh ./tmp2.sh")
+                                      :features nil
+                                      ;; This package isn't really non-lazy, but we want to call the
+                                      ;; post-init immediately, because it handles the lazy autoload
+                                      ;; setup.
+                                      :lazy nil
+                                      :post-init
+                                      (unless (featurep 'cedet-devel-load)
+                                        (load (expand-file-name "cedet-devel-load.el" pdir)))
+                                      :after (progn
+                                               (add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
+                                               (add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
+                                               (add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
+                                               ;(semantic-mode 1)
+                                               (global-ede-mode 1)
+                                               ))
+                               (:name ecb
+                                      :description "Emacs Code Browser"
+                                      :type git
+                                      :url "https://github.com/alexott/ecb/"
+                                        ; :branch "new-cedet"
+                                      :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (progn (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
+                                      :after (progn
+                                               ;(setq ecb-auto-activate t)
+                                               (setq ecb-tip-of-the-day nil)
+                                               (setq ecb-windows-width 0.22)
+                                               (defconst ecb-cedet-required-version-min '(1 0 1 1)
+                                                 "Minimum version of cedet needed by ECB.The meaning is as follows:1. Major-version2. Minor-version3. 0 = alpha, 1 = beta, 2 = pre, 3 = nothing \(e.g. \"1.4\"), 4 = . \(e.g. \"1.4.3\"4. Subversion after the alpha, beta, pre or .")
+                                               (defconst ecb-cedet-required-version-max '(2 1 4 9)
+                                                 "Maximum version of CEDET currently accepted by ECB. See `ecb-required-cedet-version-min' for an explanation.")))
+                               )))
+
+(setq ruby-insert-encoding-magic-comment nil) ; 不在文件头插入文件编码行
+;(setq whitespace-global-modes nil) ; 不自动删除多余空格
+
+(setq el-get-sources
+      (append el-get-sources '((:name ruby-mode
+                                      :load "ruby-mode.el"
+                                :after(progn
+                                        (setenv "RUBYOPT" "-KU")
+                                        )
+                                )
+                               (:name rvm)
+                               (:name robe
+                                 :description "Code navigation, documentation lookup and completion for Ruby https://github.com/dgutov/robe"
+                                 :type git
+                                 :url "https://github.com/dgutov/robe.git"
+                                 :branch "master"
+                                 :load-path(".")
+                                 :after(progn
+                                         (add-hook 'ruby-mode-hook 'robe-mode)
+                                         ;(push 'company-robe company-backends)
+                                         (add-hook 'robe-mode-hook 'robe-ac-setup)
+                                         ))
+                               )))
+
+(setq el-get-sources
+      (append el-get-sources '(
+                               (:name rinari ; include inf-ruby ruby-compilation
+                                      :build ("rake doc:make_info") ;;; install_info format error, maybe need ginstall-info
+                                      :load-path(".")
+                                      :after (progn
+                                               (ido-mode t)
+                                               (require 'rinari)
+                                               (add-hook 'ruby-mode-hook
+                                                         '(progn
+                                                            (remove-hook 'before-save-hook 'ruby-mode-set-encoding) ; 不在文件头插入文件编码行
+                                                            (remove-hook 'before-save-hook 'delete-trailing-whitespace) ; 不自动删除多余空格
+                                                            ))
+                                               (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+                                               (setq rinari-tags-file-name "TAGS")
+                                               ))
+                               (:name rhtml-mode)
+                               (:name yaml-mode)
+                               )))
+
+(setq el-get-sources
+      (append el-get-sources '((:name markdown-mode))))
+
+(setq el-get-sources
+ (append el-get-sources '((:name sdcv-mode
+                                 :description "emacs dictionary, need stardict and shell command sdcv, source: http://www.cnblogs.com/bamanzi/archive/2011/06/26/emacs-stardict.html"
+                                 :type git
+                                 :url "https://github.com/gucong/emacs-sdcv"
+                                 :branch "master"
+                                 :load-path(".")
+                                 :after(progn
+                                         (require 'sdcv-mode)
+                                         (global-set-key (kbd "C-c d") 'sdcv-search)
+                                         ))
+                          (:name showtip
+                                 :description "show tooltip near the cursor"
+                                 :type git
+                                 :url "https://github.com/emacsmirror/showtip"
+                                 :branch "master"
+                                 :load-path("."))
+                          (:name weibo.emacs
+                                 :description "emacs weibo"
+                                 :type git
+                                 :url "https://github.com/austin-----/weibo.emacs"
+                                 :branch "master"
+                                 :load-path(".")
+                                 :after(progn
+                                         (require 'weibo)
+                                         ))
+                          (:name git-emacs
+                                 :after (progn
+                                          (defun gitk-files ()
+                                            (interactive)
+                                            (start-process "gitk" nil gitk-program buffer-file-name))
+                                          ))
+                          (:name calfw
+                                 :description "org-model sync with google calendar"
+                                 :after(progn
+                                         (require 'calfw)
+                                         (require 'calfw-org)
+                                         ))
+                          (:name emacs-w3m
+                                 :after(progn
+                                         ;(setq browse-url-browser-function 'w3m-browse-url)
+                                         (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+                                         ;; optional keyboard short-cut
+                                         (global-set-key "\C-xm" 'browse-url-at-point)
+                                         ))
+                          )))
+
+(setq el-get-sources
+      (append el-get-sources '((:name android-mode
+                                      :after (progn
+                                               (require 'android-mode)
+                                               (custom-set-variables
+                                                '(android-mode-avd "test")
+                                                '(android-mode-sdk-dir "~/nethd/local_soft/android-sdk-linux"))
+                                               ))
+                               )))
+
+(setq el-get-sources
+      (append el-get-sources '((:name emms
+                                      :type git
+                                      :url "https://github.com/emacsmirror/emms/"
+                                      :load-path ("." "./lisp")
+                                      :features emms-setup
+                                      :after (progn
+                                               (emms-devel)
+                                               (setq emms-source-file-default-directory "~/Music/")
+                                               ;; Track Show Format (for playlist buffer)
+                                               (setq emms-last-played-format-alist
+                                                     '(((emms-last-played-seconds-today) . "%a %H:%M")
+                                                       (604800                           . "%a %H:%M") ; this week
+                                                       ((emms-last-played-seconds-month) . "%d")
+                                                       ((emms-last-played-seconds-year)  . "%m/%d")
+                                                       (t                                . "%Y/%m/%d")))
+                                               (emms-history-load) ;; generate playlist buffer
+
+                                               (eval-after-load "emms"
+                                                 '(progn
+                                                    ;; playlist
+                                                    (setq my-emms-playlist (concat emms-source-file-default-directory "playlist"))
+
+                                                    ;; lyrics and playing-time
+                                                    (setq emms-lyrics-dir (concat emms-source-file-default-directory "lyrics")
+                                                          emms-mode-line-format "[ %s ]"
+                                                          emms-lyrics-display-format "%s"
+                                                          emms-playing-time-display-format "%s")
+
+                                                    (defun ywb-save-playlist-m3ulist ()
+                                                      "Save playlist buffer to m3u file"
+                                                      (interactive)
+                                                      (save-excursion
+                                                        (set-buffer emms-playlist-buffer)
+                                                        (call-interactively 'ido-write-file)))
+
+                                                    ;; Save current playlist to file before exit
+                                                    (add-hook 'kill-emacs-hook (lambda()
+                                                                                 (set-buffer emms-playlist-buffer)
+                                                                                 (write-region (point-min) (point-max) my-emms-playlist nil)))
+
+                                                    (setq xwl-emms-playlist-last-track nil)
+                                                    (setq xwl-emms-playlist-last-indent "\\")
+
+                                                    (defun xwl-emms-track-description-function (track)
+                                                      "Return a description of the current track."
+                                                      (let* ((name (emms-track-name track))
+                                                             (type (emms-track-type track))
+                                                             (short-name (file-name-nondirectory name))
+                                                             (play-count (or (emms-track-get track 'play-count) 0))
+                                                             (last-played (or (emms-track-get track 'last-played) '(0 0 0)))
+                                                             (empty "..."))
+                                                        (prog1
+                                                            (case (emms-track-type track)
+                                                              ((file url)
+                                                               (let* ((artist (or (emms-track-get track 'info-artist) empty))
+                                                                      (year (emms-track-get track 'info-year))
+                                                                      (playing-time (or (emms-track-get track 'info-playing-time) 0))
+                                                                      (min (/ playing-time 60))
+                                                                      (sec (% playing-time 60))
+                                                                      (album (or (emms-track-get track 'info-album) empty))
+                                                                      (tracknumber (emms-track-get track 'info-tracknumber))
+                                                                      (short-name (file-name-sans-extension
+                                                                                   (file-name-nondirectory name)))
+                                                                      (title (or (emms-track-get track 'info-title) short-name))
+
+                                                                      ;; last track
+                                                                      (ltrack xwl-emms-playlist-last-track)
+                                                                      (lartist (or (and ltrack (emms-track-get ltrack 'info-artist))
+                                                                                   empty))
+                                                                      (lalbum (or (and ltrack (emms-track-get ltrack 'info-album))
+                                                                                  empty))
+
+                                                                      (same-album-p (and (not (string= lalbum empty))
+                                                                                         (string= album lalbum))))
+                                                                 (format "%10s  %3d   %-20s%-60s%-35s%-15s%s"
+                                                                         (emms-last-played-format-date last-played)
+                                                                         play-count
+                                                                         artist
+
+                                                                         ;; Combine indention, tracknumber, title.
+                                                                         (concat
+                                                                          (if same-album-p ; indention by album
+                                                                              (setq xwl-emms-playlist-last-indent
+                                                                                    (concat " " xwl-emms-playlist-last-indent))
+                                                                            (setq xwl-emms-playlist-last-indent "\\")
+                                                                            "")
+                                                                          (if (and tracknumber ; tracknumber
+                                                                                   (not (zerop (string-to-number tracknumber))))
+                                                                              (format "%02d." (string-to-number tracknumber))
+                                                                            "")
+                                                                          title        ; title
+                                                                          )
+
+                                                                         ;; album
+                                                                         (cond ((string= album empty) empty)
+                                                                               ;; (same-album-p "  ")
+                                                                               (t (concat "《" album "》")))
+
+                                                                         (or year empty)
+                                                                         (if (or (> min 0)  (> sec 0))
+                                                                             (format "%02d:%02d" min sec)
+                                                                           empty))))
+                                                              ((url)
+                                                               (concat (symbol-name type) ":" name))
+                                                              (t
+                                                               (format "%-3d%s"
+                                                                       play-count
+                                                                       (concat (symbol-name type) ":" name))))
+                                                          (setq xwl-emms-playlist-last-track track))))
+
+                                                    (setq emms-track-description-function
+                                                          'xwl-emms-track-description-function)
+                                                    ))
+
+                                               ))
+                               )))
