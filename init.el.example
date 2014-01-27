@@ -1,5 +1,4 @@
 (setq my-init-base-path "~/.emacs.d/")
-(load-file (concat my-init-base-path "init/base.el"))
 
 ;;; start ;;; package
 (require 'package)
@@ -22,33 +21,63 @@
      (eval-print-last-sexp))))
 ;; el-get config
 (setq el-get-sources '())
-(load-file-or-dir (concat my-init-base-path "init/el-get"))
+
+
+;; load emacs config with org
+(require 'cl)
+(setq org-babel-load-languages '((emacs-lisp . t)))
+(setq org-confirm-babel-evaluate nil)
+(require 'org-install)
+(require 'org)
+(org-babel-load-file (concat my-init-base-path "init/base.org"))
+(org-babel-load-file (concat my-init-base-path "init/el-get.org"))
 
 (setq my-el-get-packages
       (append '(el-get)
               (mapcar 'el-get-source-name el-get-sources)))
 (el-get 'sync my-el-get-packages)
-;(ecb-activate) ;;; auto open ecb
+
+;;(ecb-activate) ;;; auto open ecb
+
+;; emms
+(require 'emms-setup)
+(emms-devel)
+(require 'emms-player-simple)
+(require 'emms-source-file)
+(require 'emms-source-playlist)
+(setq emms-player-list '(emms-player-mpg321
+                         emms-player-ogg123
+                         emms-player-mplayer))
+(emms-default-players)
+;; Show the current track each time EMMS
+;; starts to play a track with "NP : "
+(add-hook 'emms-player-started-hook 'emms-show)
+(setq emms-show-format "NP: %s")
+;; When asked for emms-play-directory,
+;; always start from this one 
+(setq emms-source-file-default-directory "~/Music/")
 ;;; end ;;; el-get
 
 ;;; start ;;; person
 ;; persion config
-(load-file-or-dir (concat my-init-base-path "init/personal"))
+(org-babel-load-file (concat my-init-base-path "init/personal.org"))
+;(load-file-or-dir (concat my-init-base-path "init/personal"))
 ;;; end ;;; person
 
 ;;; start ;;; buildin config
 (server-start)
 ;;; end ;;; buildin config
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(android-mode-avd "test")
+ '(android-mode-sdk-dir "~/nethd/local_soft/android-sdk-linux")
  '(ecb-options-version "2.40")
- '(git-baseline-alist (quote (("/home/s/.emacs.d/" . "master"))) t)
-   '(safe-local-variable-values
+ '(git-baseline-alist (quote (("/home/sjm/.emacs.d/" . "master"))) t)
+ '(safe-local-variable-values
    (quote
     ((encoding . binary)
      (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
@@ -76,3 +105,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
