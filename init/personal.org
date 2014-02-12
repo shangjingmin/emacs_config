@@ -62,7 +62,7 @@
 
 ;;; theme
 (load-theme 'tango)
-(set-default-font "Bitstream Vera Sans Mono-10")
+;(set-default-font "Bitstream Vera Sans Mono-10")
 ;;; 设置中文字体
 (set-fontset-font "fontset-default"
 		  'gb18030 '("WenQuanYi Bitmap Song" . "unicode-bmp"))

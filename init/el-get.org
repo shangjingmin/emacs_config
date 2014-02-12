@@ -53,20 +53,20 @@
                                                ;(semantic-mode 1)
                                                (global-ede-mode 1)
                                                ))
-                               (:name ecb
-                                      :description "Emacs Code Browser"
-                                      :type git
-                                      :url "https://github.com/alexott/ecb/"
-                                        ; :branch "new-cedet"
-                                      :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (progn (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
-                                      :after (progn
-                                               ;(setq ecb-auto-activate t)
-                                               (setq ecb-tip-of-the-day nil)
-                                               (setq ecb-windows-width 0.22)
-                                               (defconst ecb-cedet-required-version-min '(1 0 1 1)
-                                                 "Minimum version of cedet needed by ECB.The meaning is as follows:1. Major-version2. Minor-version3. 0 = alpha, 1 = beta, 2 = pre, 3 = nothing \(e.g. \"1.4\"), 4 = . \(e.g. \"1.4.3\"4. Subversion after the alpha, beta, pre or .")
-                                               (defconst ecb-cedet-required-version-max '(2 1 4 9)
-                                                 "Maximum version of CEDET currently accepted by ECB. See `ecb-required-cedet-version-min' for an explanation.")))
+;                               (:name ecb
+;                                      :description "Emacs Code Browser"
+;                                      :type git
+;                                      :url "https://github.com/alexott/ecb/"
+;                                        ; :branch "new-cedet"
+;                                      :build `(,(concat  "make CEDET=" " EMACS=" el-get-emacs)) ; (progn (ecb-activate)(ecb-byte-compile)) ; 进入后编译以对应正确的cedet版本 
+;                                      :after (progn
+;                                               ;(setq ecb-auto-activate t)
+;                                               (setq ecb-tip-of-the-day nil)
+;                                               (setq ecb-windows-width 0.22)
+;                                               (defconst ecb-cedet-required-version-min '(1 0 1 1)
+;                                                 "Minimum version of cedet needed by ECB.The meaning is as follows:1. Major-version2. Minor-version3. 0 = alpha, 1 = beta, 2 = pre, 3 = nothing \(e.g. \"1.4\"), 4 = . \(e.g. \"1.4.3\"4. Subversion after the alpha, beta, pre or .")
+;                                               (defconst ecb-cedet-required-version-max '(2 1 4 9)
+;                                                 "Maximum version of CEDET currently accepted by ECB. See `ecb-required-cedet-version-min' for an explanation.")))
                                )))
 #+end_src
 * ruby
@@ -104,6 +104,7 @@
                                       :load-path(".")
                                       :after (progn
                                                (ido-mode t)
+                                               (setq el-get-verbose t)
                                                (require 'rinari)
                                                (add-hook 'ruby-mode-hook
                                                          '(progn
