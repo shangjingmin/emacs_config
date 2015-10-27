@@ -31,6 +31,7 @@
 (require 'org)
 (org-babel-load-file (concat my-init-base-path "init/base.org"))
 (org-babel-load-file (concat my-init-base-path "init/el-get.org"))
+(org-babel-load-file (concat my-init-base-path "init/packages.org"))
 
 (setq my-el-get-packages
       (append '(el-get)
