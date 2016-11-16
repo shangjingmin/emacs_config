@@ -144,6 +144,7 @@
                                  :after(progn
                                          (require 'ox-reveal)
                                          (setq org-reveal-root "file:////home/s/programs/revealjs")
+                                         (setq org-reveal-hlevel 2)
                                          ))
                           )))
 #+end_src
