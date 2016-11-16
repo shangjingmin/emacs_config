@@ -1,15 +1,5 @@
 (setq my-init-base-path "~/.emacs.d/")
 
-;;; start ;;; package
-(require 'package)
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/" ) t)
-(package-initialize)
-;; package config
-;;; end ;;; package
-
 ;;; start ;;; el-get
 (setq my-el-get-path (concat my-init-base-path "el-get/"))
 (add-to-list 'load-path (concat my-el-get-path "el-get") )
@@ -22,6 +12,20 @@
 ;; el-get config
 (setq el-get-sources '())
 
+;;; start ;;; org mode first for org-mode update
+(setq org-first-source '(org-mode))
+(el-get 'sync org-first-source)
+;;; end ;;; org mode first
+
+;;; start ;;; package
+(require 'package)
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/" ) t)
+(package-initialize)
+;; package config
+;;; end ;;; package
 
 ;; load emacs config with org
 (require 'cl)
