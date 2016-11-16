@@ -143,7 +143,7 @@
                                  :load-path(".")
                                  :after(progn
                                          (require 'ox-reveal)
-                                         (setq org-reveal-root "file:///~/programs/revealjs")
+                                         (setq org-reveal-root "file:////home/s/programs/revealjs")
                                          ))
                           )))
 #+end_src
