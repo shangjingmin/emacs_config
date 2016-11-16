@@ -61,8 +61,14 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 ;;; theme
-(load-theme 'tango)
+; (load-theme 'tango)
+;; package: color-theme-solarized
+(set-frame-parameter nil 'background-mode 'dark)
+(set-terminal-parameter nil 'background-mode 'dark)
+(load-theme 'solarized t)
+;(enable-theme)
 ;(set-default-font "Bitstream Vera Sans Mono-10")
+;(set-default-font " -bitstream-Courier 10 Pitch-normal-normal-normal-*-17-*-*-*-m-0-iso10646-1")
 ;;; 设置中文字体
 (set-fontset-font "fontset-default"
 		  'gb18030 '("WenQuanYi Bitmap Song" . "unicode-bmp"))
@@ -175,8 +181,10 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
 (global-set-key (kbd "{") 'skeleton-pair-insert-maybe)
 #+end_src
 ** org
-#+begin_src emacs-lisp
-(setq org-startup-indented t) ; 自动缩进
+*
+* org
+  #+begin_src emacs-lisp
+  (setq org-startup-indented t) ; 自动缩进
 (setq org-export-with-sub-superscripts '{}) ; 防止下划线后内容变为下标
 
 (setq org-todo-keywords '(
@@ -206,8 +214,23 @@ If set/leave chinese-font-size to nil, it will follow english-font-size"
         ; :table-of-contents nil
         :makeindex t
         )))
-#+end_src
+  #+end_src
 * sjm
 #+begin_src emacs-lisp
 (safe-load "sjm.el")
 #+end_src
+* job
+** hkr
+*** oracle
+#+begin_src emacs-lisp
+(setq sjm-var-oracle-link (make-hash-table :test 'equal))
+(safe-load "sec.el")
+(puthash "eam-test" "eam/eam@10.1.239.5:1521/testdb" sjm-var-oracle-link)
+(puthash "mms-test" "scjy/scjy@10.1.230.99:1521/orcl" sjm-var-oracle-link)
+
+(defun sjm-oracle-sqlplus (str)
+  "open sqlplus client with sqlplus function: str is key of oracle connect string"
+  (interactive "skey of connect string:")
+    (sqlplus (gethash str sjm-var-oracle-link)))
+#+end_src
+** yxf
