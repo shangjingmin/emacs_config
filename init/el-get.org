@@ -118,6 +118,7 @@
                                                ))
                                (:name rhtml-mode)
                                (:name yaml-mode)
+                               ;(:name projectile-rails)
                                )))
 #+end_src
 * java
