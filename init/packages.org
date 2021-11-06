@@ -3,8 +3,34 @@
 #+begin_src emacs-lisp
 (defvar required-packages
   '(
-    sqlplus
+;    sqlplus
     org
+		yasnippet
+		;textmate
+		;highlight-parentheses
+		cedet
+		;ecb
+		markdown-mode
+		w3m
+		emms
+		ox-reveal
+		;jdee
+		dash
+		popup
+		eclim
+		android-mode
+		ruby-mode
+		rvm
+		robe
+		rinari
+		rhtml-mode
+		yaml-mode
+		projectile-rails
+		sdcv
+		showtip
+		;weibo.emacs
+		magit
+		calfw
   ) "a list of packages to ensure are installed at launch.")
 #+end_src
 ** install packages

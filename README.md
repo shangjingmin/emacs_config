@@ -7,3 +7,12 @@ Tested in Emacs24 on Ubuntu12.04.
 
 * need tools: sudo apt-get install git bzr cvs
 git/cvs/bzr, and some lib for some packages
+
+
+** win10
+*** make dir ~\.emacs.d
+>rmdir "D:\win_users\sjm\AppData\Roaming\.emacs.d"
+>mklink /J "D:\win_users\sjm\AppData\Roaming\.emacs.d" "F:\appdata\emacs_config"
+
+*** make file ~\AppData\Roaming\.emacs
+(load-file "~/.emacs.d/init.el")
